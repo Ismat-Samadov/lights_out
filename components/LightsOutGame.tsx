@@ -48,10 +48,13 @@ export default function LightsOutGame({ gridSize = 5 }: LightsOutGameProps) {
     [gameState]
   );
 
-  const handleReset = useCallback(() => {
-    setGameState(createInitialState(gridSize));
+  const handleReset = () => {
+    console.log('Reset button clicked!');
+    const newState = createInitialState(gridSize);
+    console.log('New state created:', newState);
+    setGameState(newState);
     setShowWinAnimation(false);
-  }, [gridSize]);
+  };
 
   useEffect(() => {
     if (showWinAnimation) {
@@ -94,10 +97,11 @@ export default function LightsOutGame({ gridSize = 5 }: LightsOutGameProps) {
 
           <button
             onClick={handleReset}
-            className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-2xl font-bold text-white text-lg shadow-lg hover:shadow-2xl hover:shadow-purple-500/50 hover:scale-105 active:scale-95 transition-all duration-300 overflow-hidden"
+            type="button"
+            className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-2xl font-bold text-white text-lg shadow-lg hover:shadow-2xl hover:shadow-purple-500/50 hover:scale-105 active:scale-95 transition-all duration-300 overflow-hidden cursor-pointer"
           >
-            <span className="relative z-10">New Game</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <span className="relative z-10 pointer-events-none">New Game</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
           </button>
 
           {!gameState.isWon && gameState.moves > 0 && (
