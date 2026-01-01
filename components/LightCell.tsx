@@ -23,6 +23,7 @@ export default function LightCell({ isOn, onClick, row, col }: LightCellProps) {
       onClick={handleClick}
       className={`
         relative aspect-square rounded-xl transition-all duration-300 transform overflow-hidden
+        min-w-[70px] min-h-[70px] md:min-w-[100px] md:min-h-[100px]
         ${isAnimating ? 'animate-pulse-light' : ''}
         ${
           isOn
@@ -30,7 +31,7 @@ export default function LightCell({ isOn, onClick, row, col }: LightCellProps) {
             : 'bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 scale-95'
         }
         hover:scale-105 active:scale-90
-        border-2 cursor-pointer
+        border-2 cursor-pointer touch-none select-none
         ${isOn ? 'border-yellow-200 shadow-[0_0_30px_rgba(251,191,36,0.6),0_0_60px_rgba(249,115,22,0.4)]' : 'border-gray-600 shadow-inner'}
       `}
       style={{

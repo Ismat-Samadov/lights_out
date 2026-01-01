@@ -20,12 +20,10 @@ export default function LightsOutGame({ gridSize = 5 }: LightsOutGameProps) {
     isWon: false,
   });
   const [showWinAnimation, setShowWinAnimation] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
 
   // Initialize game after component mounts to avoid hydration mismatch
   useEffect(() => {
     setGameState(createInitialState(gridSize));
-    setIsMounted(true);
   }, [gridSize]);
 
   const handleCellClick = useCallback(
@@ -49,10 +47,7 @@ export default function LightsOutGame({ gridSize = 5 }: LightsOutGameProps) {
   );
 
   const handleReset = () => {
-    console.log('Reset button clicked!');
-    const newState = createInitialState(gridSize);
-    console.log('New state created:', newState);
-    setGameState(newState);
+    setGameState(createInitialState(gridSize));
     setShowWinAnimation(false);
   };
 
@@ -115,18 +110,18 @@ export default function LightsOutGame({ gridSize = 5 }: LightsOutGameProps) {
         </div>
 
         {/* Game board */}
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center mb-8 w-full">
           <div
-            className="relative bg-gradient-to-br from-gray-800/80 via-gray-900/80 to-black/80 backdrop-blur-xl p-4 md:p-8 rounded-3xl shadow-2xl border border-gray-700/50"
+            className="relative bg-gradient-to-br from-gray-800/80 via-gray-900/80 to-black/80 backdrop-blur-xl p-6 md:p-10 rounded-3xl shadow-2xl border border-gray-700/50 w-full"
             style={{
-              maxWidth: '600px',
+              maxWidth: '800px',
             }}
           >
             {/* Decorative glow */}
             <div className="absolute -inset-1 bg-gradient-to-r from-purple-600/20 via-pink-600/20 to-orange-600/20 rounded-3xl blur-xl -z-10" />
 
             <div
-              className="grid gap-2 md:gap-3"
+              className="grid gap-3 md:gap-4"
               style={{
                 gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))`,
               }}
