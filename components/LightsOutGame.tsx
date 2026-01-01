@@ -14,10 +14,19 @@ interface LightsOutGameProps {
 }
 
 export default function LightsOutGame({ gridSize = 5 }: LightsOutGameProps) {
-  const [gameState, setGameState] = useState<GameState>(() =>
-    createInitialState(gridSize)
-  );
+  const [gameState, setGameState] = useState<GameState>({
+    grid: Array(gridSize).fill(null).map(() => Array(gridSize).fill(false)),
+    moves: 0,
+    isWon: false,
+  });
   const [showWinAnimation, setShowWinAnimation] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Initialize game after component mounts to avoid hydration mismatch
+  useEffect(() => {
+    setGameState(createInitialState(gridSize));
+    setIsMounted(true);
+  }, [gridSize]);
 
   const handleCellClick = useCallback(
     (row: number, col: number) => {
@@ -58,7 +67,7 @@ export default function LightsOutGame({ gridSize = 5 }: LightsOutGameProps) {
 
       {/* Animated gradient orbs */}
       <div className="fixed top-20 left-20 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl animate-pulse -z-10" />
-      <div className="fixed bottom-20 right-20 w-96 h-96 bg-orange-600/20 rounded-full blur-3xl animate-pulse -z-10" style={{ animationDelay: '1s' }} />
+      <div className="fixed bottom-20 right-20 w-96 h-96 bg-orange-600/20 rounded-full blur-3xl animate-pulse -z-10 [animation-delay:1s]" />
 
       {/* Main content */}
       <div className="relative z-10 w-full max-w-4xl">
