@@ -11,13 +11,30 @@ An attractive, interactive Lights Out puzzle game built with Next.js and TypeScr
 
 ## Features
 
-- Beautiful gradient animations
-- Responsive design
-- Move counter
+### Visual Design
+- Stunning gradient backgrounds with animated orbs
+- Glowing light effects with realistic shadows
+- Smooth animations and transitions
+- Glass-morphism effects with backdrop blur
+- Floating title animations
+- Responsive design for all screen sizes
+- Custom favicon with lights theme
+
+### Gameplay
+- Move counter to track your progress
+- Reset button for quick restarts
 - Win detection with celebration animation
 - Solvable puzzles guaranteed
+- Interactive light cells with hover effects
+- Visual feedback on every click
+
+### Technical
+- Built with Next.js 14 (App Router)
 - TypeScript for type safety
 - Tailwind CSS for styling
+- Custom animations and keyframes
+- SEO optimized with metadata
+- Fully accessible with ARIA labels
 
 ## Getting Started
 

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="lightGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ef4444;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="45" fill="#1f2937"/>
+
+  <!-- 3x3 grid of lights -->
+  <circle cx="25" cy="25" r="8" fill="url(#lightGrad)" filter="url(#glow)"/>
+  <circle cx="50" cy="25" r="8" fill="#374151"/>
+  <circle cx="75" cy="25" r="8" fill="url(#lightGrad)" filter="url(#glow)"/>
+
+  <circle cx="25" cy="50" r="8" fill="#374151"/>
+  <circle cx="50" cy="50" r="8" fill="url(#lightGrad)" filter="url(#glow)"/>
+  <circle cx="75" cy="50" r="8" fill="#374151"/>
+
+  <circle cx="25" cy="75" r="8" fill="url(#lightGrad)" filter="url(#glow)"/>
+  <circle cx="50" cy="75" r="8" fill="#374151"/>
+  <circle cx="75" cy="75" r="8" fill="url(#lightGrad)" filter="url(#glow)"/>
+</svg>
